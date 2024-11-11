@@ -3,7 +3,7 @@ package classes.VehicleSubClass.EngineSubClass;
 import classes.VehicleSubClass.Engine;
 
 public class Aspiration extends Engine{
-    private String aspirationType;
+    public String aspirationType;
     private int psi;
     private int airFlowRatingInCFM;
 

@@ -3,6 +3,7 @@ package classes.VehicleSubClass.EngineSubClass;
 import classes.VehicleSubClass.Engine;
 
 public class Camshaft extends Engine{
+    public String camshaftManufactuer;
     private int camShaftLSA;
     private int camShaftDuration;
     private int camShaftCamSize;
@@ -29,7 +30,7 @@ public class Camshaft extends Engine{
         pistonCount = count;
     }
 
-    //
+    
     public void getSound(){
         System.out.println("Camshaft Sounds");
     }

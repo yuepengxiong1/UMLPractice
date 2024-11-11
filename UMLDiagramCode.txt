@@ -1,0 +1,239 @@
+classDiagram
+   Vehicle <|-- Engine
+        Engine <|-- Camshaft
+        Engine <|-- Aspiration
+            Aspiration <|-- Turbocharged
+            Aspiration <|-- Supercharged
+            Aspiration <|-- ITBs
+    Vehicle <|-- Tires
+    Vehicle <|-- Drivetrain
+        Drivetrain <|--Transmission
+        Drivetrain <|--Differential
+
+    Engine <|.. PersonInteractionEngine
+    Transmission <|.. PersonInteractionTransmission
+    Tires <|.. PersonInteractionTires
+
+class Vehicle{
+    <<Abstract>>
+    -int year
+    -int msrp
+    -String manufacturer
+    -String model
+    -int wheelCount
+    -int fuelTankCapacity
+    -int chassisMiles
+
+    +int getYear()
+    +void setYear(int year)
+    +int getMsrp()
+    +void setMsrp(int msrp)
+    +String getManufacturer()
+    +void setManufacturer(String manufacturer)
+    +String getModel()
+    +void setModel(String model)
+    +int getWheelCount()
+    +void setWheelCount(int wheelCount)
+    +int getFuelTankCapacity()
+    +void setFuelTankCapacity(int fuelTankCapacity)
+    +int getChassisMiles()
+    +void setChassisMiles(int chassisMiles)
+    +void getSound()
+}
+
+class PersonInteractionEngine{
+    <<Interface>>
+    +putFuelInCar()
+    +checkOilLevel()
+    +changeEngineOil()
+    +run()
+}
+
+class PersonInteractionTires{
+    <<Interface>>
+    +checkTirePressure()
+    +fillTiresUpToSpec()
+}
+
+class PersonInteractionTransmission{
+    <<Interface>>
+    +shiftGearUp()
+    +shiftGearDown()
+    +automaticShiftInto(String gear)
+}
+
+    
+       
+class Engine{
+    -String fuelType
+    +String engineLayout
+    -boolean hasVVT
+    -int boreSize
+    -int strokeSize
+    +int engineSizeInLiters
+    -int pistonCount
+    -int rotorCount
+    -boolean isRotory
+    #int engineMiles
+    -int oilLevel
+
+    +Engine()
+    +Engine(setvariablesthroughthis)
+    +void getSound()
+    +void setOilLevel(int oilLevel)
+    +int getBoreSize()
+    +int getStrokeSize()
+    +int getEngineSizeInLiters()
+    +boolean hasVVT()
+    +void checkOilLevel()
+    +void run()
+    +void changeEngineOil()
+
+}
+
+class Camshaft{
+    +String camshaftManufactuer
+    -int camShaftLSA
+    -int camShaftDuration
+    -int camShaftCamSize
+    -int camProfile
+    -int pistonCount
+
+    +Camshaft()
+    +Camshaft(contstuctorwithVariables)
+    +void getPistonCount(int count)
+    +void getSound()
+}
+
+class Aspiration{
+    +String aspirationType
+    -int psi
+    -int airFlowRatingInCFM
+
+    +Aspiration()
+    +Aspiration(contstuctorwithVariables)
+    +String getAspirationType()
+    +void setAspirationType(String aspirationType)
+    +int getPsi()
+    +void setPsi(int psi)
+    +int getAirFlowRatingInCFM()
+    +void setAirFlowRatingInCFM(int airFlowRatingInCFM)
+    +void getSound()
+}
+
+class Turbocharged{
+    +final String aspirationType = "Turbocharged"
+    +String turboManufacturer
+    +int forcedInductionPsi
+    -int turboCount
+    -int inducerFanSize
+    -int exducerFanSize
+    -int intakeSideInMM
+    -int exhaustSideInMM
+
+    +Turbocharged()
+    +Turbocharged(constructorwithVariables)
+    +String getTurboManufacturer()
+    +void setTurboManufacturer(String turboManufacturer)
+    +int getForcedInductionPsi()
+    +void setForcedInductionPsi(int forcedInductionPsi)
+    +int getTurboCount()
+    +void setTurboCount(int turboCount)
+    +int getInducerFanSize()
+    +void setInducerFanSize(int inducerFanSize)
+    +int getExducerFanSize()
+    +void setExducerFanSize(int exducerFanSize)
+    +int getIntakeSideInMM()
+    +void setIntakeSideInMM(int intakeSideInMM)
+    +int getExhaustSideInMM()
+    +void setExhaustSideInMM(int exhaustSideInMM)
+}
+
+class Supercharged{
+    +final String aspirationType = "Supercharged"
+    +String superChargerManufacturer
+    +int forcedInductionPsi
+    +int airFlowRatingInCFM
+    -boolean isCentrifugal
+
+    +Supercharged()
+    +Supercharged(constructorwithVariables)
+}
+
+class ITBs{
+    +final String aspirationType = "Individual Throttle Bodies"
+    +String itbManufacturer
+    -int runnerLength
+    -int numberOfRunners
+    -String runnerMaterialType
+    -boolean hasFilter
+    -boolean isRunnerLengthVariable
+    -int airFlowRatingInCFM
+
+    +ITBs()
+    +ITBs(constructorwithVariables)
+    +String getItbManufacturer()
+    +int getRunnerLength()
+    +int getNumberOfRunners()
+    +String getRunnerMaterialType()
+    +boolean isHasFilter()
+    +boolean isRunnerLengthVariable()
+    +int getAirFlowRatingInCFM()
+}
+
+class Tires{
+    +String tireManufacturer
+    -int sectionWidth
+    -int aspectRatio
+    -String radialConstruction
+    -int tireRadius
+    -int loadRating
+    +String speedRating
+    +static int tirePressurePSI
+
+    +Tires()
+    +Tires(constructorwithVariables)
+    +void checkTirePressure()
+    +void fillTiresUpToSpec()
+}
+
+class Drivetrain{
+    -String drivetrainType
+    -String driveshaftMaterial
+
+    +Drivetrain()
+    +Drivetrain(constructorwithVariables)
+    +void getSound()
+}
+
+class Transmission{
+    +String carShiftingType
+    -String transmissionType
+    +String transmissionManufactuer
+    -int numberOfGears
+    -String clutchType
+    -float[] gearRatios
+    -int flywheelWeight
+    
+    +Transmission()
+    +Transmission(constructorwithVariables)
+    +void shiftGearUp()
+    +void automaticShiftInto(String gear)
+    +void shiftGearDown()
+    +void getSound()
+
+    
+}
+
+class Differential{
+    +String differentialType
+    +String differentialManufactuer
+    -static String differentialModel
+    -static float rearDiffGearRatio
+    -static float frontDiffGearRatio
+    -boolean hasFrontDifferential
+
+    +Differential()
+    +Differential(constructorwithVariables)
+    +void getSound()
+}
